@@ -1,0 +1,32 @@
+
+type User{
+    id:ID!,
+    userName:String,
+    userCity:String,
+    userEmail:String,
+    userPh:String,
+    orders:[Order]
+}
+
+type Order {
+    id:ID!,
+    ordDetails:String,
+    ordName:String,
+    user:User
+}
+
+type Query{
+    getUsers:[User],
+    getUser(id:ID!):User,
+    getOrders:[Order],
+    getOrder(orderId:ID):Order
+}
+
+type Mutation{
+    createUser(userName:String, userEmail:String,userPh:String):User
+    updateUser(id:ID!, userName:String, userEmail:String,userPh:String):User
+    deleteUser(id:ID!):Boolean
+    createOrder(ordDetails:String,ordName:String,userId:Int):Order
+    updateOrder(id:ID!, ordDetails:String,ordName:String,):Order
+    deleteOrder(id:ID!):Boolean
+}
